@@ -1,0 +1,8 @@
+{
+  "name": "EpiVerse — Campus connected",
+  "short_name": "EpiVerse",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#071A3D",
+  "theme_color": "#071A3D"
+}
