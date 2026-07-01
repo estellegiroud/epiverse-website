@@ -1,13 +1,8 @@
-name: Deploy EpiVerse Pages
+name: Deploy EpiVerse static site to GitHub Pages
 
 on:
   push:
-    branches:
-      - main
-    paths:
-      - "site/**"
-      - ".github/workflows/deploy-pages.yml"
-
+    branches: [main]
   workflow_dispatch:
 
 permissions:
@@ -16,8 +11,8 @@ permissions:
   id-token: write
 
 concurrency:
-  group: "github-pages"
-  cancel-in-progress: true
+  group: pages
+  cancel-in-progress: false
 
 jobs:
   deploy:
@@ -34,11 +29,11 @@ jobs:
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
 
-      - name: Upload static website
+      - name: Upload static site
         uses: actions/upload-pages-artifact@v3
         with:
-          path: "./site"
+          path: .
 
-      - name: Deploy to GitHub Pages
+      - name: Deploy
         id: deployment
         uses: actions/deploy-pages@v4
